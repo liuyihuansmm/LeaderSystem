@@ -1,13 +1,20 @@
 package com.scyy.LeaderSystem.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 import java.util.Properties;
 
 public class IpUtil {
+	
+	static String configPath = IpUtil.class.getResource("/mac.properties").getPath();
+	
 	public static String getMacAddress(){
         Enumeration<NetworkInterface> ni;
 		try {
@@ -44,13 +51,15 @@ public class IpUtil {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
-			input = IpUtil.class.getClassLoader().getResourceAsStream("mac.properties");
+			input = new FileInputStream(configPath);
 			prop.load(input);
-			Enumeration<Object> enumr = prop.elements();
+			Enumeration<Object> enumr = prop.keys();
 			while(enumr.hasMoreElements()){
 				String value = (String)enumr.nextElement();
 				if(value !=null){
 					flag = localMac.equals(value);
+					if(flag == true)
+						break;
 				}
 			}
 		} catch (IOException e) {
@@ -66,5 +75,30 @@ public class IpUtil {
 			}
 		}
 		return flag;
+	}
+	
+	public static void registMac(){
+		String localMac = getMacAddress();
+		Properties prop = new Properties();
+		InputStream input = null;
+		try {
+			input = new FileInputStream(configPath);
+			prop.load(input);
+			prop.setProperty(localMac, "mac");
+			prop.store(new FileOutputStream(configPath),"insert:"+localMac);
+		}catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			try {
+				input.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

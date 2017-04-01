@@ -53,9 +53,18 @@ public class MainFrame extends JFrame {
 				}
 			});
 		}else{
-			JOptionPane.showMessageDialog(null, "你的Mac地址不在使用范围内", "错误", JOptionPane.ERROR_MESSAGE);
+			String content = JOptionPane.showInputDialog(null,"你的Mac尚未注册,是否注册？");
+			if(content == null){
+				System.exit(0);
+			}
+			if(content.equals("scyy")){
+				IpUtil.registMac();
+				JOptionPane.showMessageDialog(null, "注册成功,请重启程序！");
+			}else{
+				JOptionPane.showMessageDialog(null, "密码错误！");
+			}
+			System.exit(0);
 		}
-		
 	}
 
 	/**

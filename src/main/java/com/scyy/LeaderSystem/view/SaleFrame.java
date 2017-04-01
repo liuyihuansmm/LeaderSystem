@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Frame;
+import java.awt.MenuBar;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JMenuBar;
@@ -32,7 +34,10 @@ import java.awt.Dimension;
 public class SaleFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	private JMenuBar menuBar;
+	private JPanel navigator;
+	private JTabbedPane tpBaseData;
+	private JTabbedPane tpVisable;
 	/**
 	 * Launch the application.
 	 */
@@ -62,95 +67,27 @@ public class SaleFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(new Color(255, 255, 255));
-		menuBar.setBounds(0, 0, 1362, 41);
+		
+		menuBar = new MyMenuBar();
 		contentPane.add(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("New menu");
-		menuBar.add(mnNewMenu);
-		
-		JMenu mnNewMenu_1 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_1);
-		
-		JMenu mnNewMenu_2 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_2);
-		
-		JMenu mnNewMenu_3 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_3);
-		
-		JMenu mnNewMenu_4 = new JMenu("New menu");
-		menuBar.add(mnNewMenu_4);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 51, 183, 633);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(142, 195, 235));
-		panel_1.setBounds(0, 0, 183, 63);
-		panel.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("操 作 菜 单");
-		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setIcon(new ImageIcon(SaleFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/Start_Menu.png")));
-		lblNewLabel.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 0, 183, 63);
-		panel_1.add(lblNewLabel);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 255, 255));
-		panel_2.setBounds(0, 62, 183, 571);
-		panel.add(panel_2);
-			
-		JTree tree = new JTree();
-		tree.setRowHeight(30);
-		tree.setFont(new Font("微软雅黑", Font.PLAIN, 18));
-		tree.setShowsRootHandles(true);
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("领导查询") {
-				{
-					DefaultMutableTreeNode node_1;
-					node_1 = new DefaultMutableTreeNode("销售");
-						node_1.add(new DefaultMutableTreeNode("总销售"));
-						node_1.add(new DefaultMutableTreeNode("近三月销售"));
-						node_1.add(new DefaultMutableTreeNode("内部销售"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("采购");
-						node_1.add(new DefaultMutableTreeNode("采购金额"));
-						node_1.add(new DefaultMutableTreeNode("重点供应商"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("客户");
-						node_1.add(new DefaultMutableTreeNode("重点客户"));
-					add(node_1);
-					node_1 = new DefaultMutableTreeNode("库存");
-						node_1.add(new DefaultMutableTreeNode("近效库存"));
-						node_1.add(new DefaultMutableTreeNode("失效库存"));
-					add(node_1);
-				}
-			}
-		));
-		tree.setCellRenderer(new MyDefaultTreeCellRenderer());
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addComponent(tree, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGap(41)
-					.addComponent(tree, GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
-		);
-		panel_2.setLayout(gl_panel_2);
-		
+		navigator =  new MyOptionMenu();
+		contentPane.add(navigator);
+
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(new Color(255, 255, 255));
 		tabbedPane.setBounds(187, 51, 1175, 633);
 		contentPane.add(tabbedPane);
+		
+		tpBaseData = new JTabbedPane(JTabbedPane.TOP);
+		tpBaseData.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+		tpBaseData.setBackground(new Color(255, 255, 255));
+		tabbedPane.addTab("基本数据", new ImageIcon(SaleFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/database.png")), tpBaseData, null);
+		
+		tpVisable = new JTabbedPane(JTabbedPane.TOP);
+		tpVisable.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+		tpVisable.setBackground(new Color(255, 255, 255));
+		tabbedPane.addTab("可视化", new ImageIcon(SaleFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/visable.png")), tpVisable, null);
 		
 	}
 }
