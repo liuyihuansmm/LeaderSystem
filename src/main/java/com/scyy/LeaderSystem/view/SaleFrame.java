@@ -22,6 +22,9 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
+
+import com.scyy.LeaderSystem.util.MyDefaultTreeCellRenderer;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -53,13 +56,13 @@ public class SaleFrame extends JFrame {
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(SaleFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/title_icon.jpg")));
 		setTitle("销售");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(new Color(255, 255, 255));
 		menuBar.setBounds(0, 0, 1362, 41);
@@ -103,26 +106,9 @@ public class SaleFrame extends JFrame {
 		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setBounds(0, 62, 183, 571);
 		panel.add(panel_2);
-		
-		/*
-		//根菜单
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode("领导查询");
-		//一级菜单
-		DefaultMutableTreeNode sale = new DefaultMutableTreeNode("销售");
-		DefaultMutableTreeNode bussiness = new DefaultMutableTreeNode("交易");
-		DefaultMutableTreeNode customer = new DefaultMutableTreeNode("客户");
-		DefaultMutableTreeNode stock = new DefaultMutableTreeNode("库存");
-		DefaultMutableTreeNode pur = new DefaultMutableTreeNode("采购");
-		
-		DefaultTreeModel treeModel = new DefaultTreeModel(root);
-		treeModel.insertNodeInto(sale, root,root.getChildCount());
-		treeModel.insertNodeInto(bussiness, root,root.getChildCount());
-		treeModel.insertNodeInto(customer, root,root.getChildCount());
-		treeModel.insertNodeInto(stock, root,root.getChildCount());
-		*/
-		
+			
 		JTree tree = new JTree();
-		tree.setRowHeight(25);
+		tree.setRowHeight(30);
 		tree.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 		tree.setShowsRootHandles(true);
 		tree.setModel(new DefaultTreeModel(
@@ -148,6 +134,7 @@ public class SaleFrame extends JFrame {
 				}
 			}
 		));
+		tree.setCellRenderer(new MyDefaultTreeCellRenderer());
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
 			gl_panel_2.createParallelGroup(Alignment.LEADING)
@@ -164,5 +151,6 @@ public class SaleFrame extends JFrame {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(187, 51, 1175, 633);
 		contentPane.add(tabbedPane);
+		
 	}
 }
