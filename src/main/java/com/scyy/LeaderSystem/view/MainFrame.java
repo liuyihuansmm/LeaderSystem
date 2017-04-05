@@ -1,13 +1,14 @@
 package com.scyy.LeaderSystem.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.scyy.LeaderSystem.service.SaleByDeptService;
 import com.scyy.LeaderSystem.util.IpUtil;
+import com.scyy.LeaderSystem.util.SpringFactory;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -17,26 +18,28 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JComboBox;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+
+@Component("MainFrame")
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	
+	@Autowired
+	private SaleFrame saleFrame;
+	
+	@Autowired
+	private SaleByDeptService saleByDeptService;
 	/**
 	 * Launch the application.
 	 */
@@ -45,7 +48,8 @@ public class MainFrame extends JFrame {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						MainFrame frame = new MainFrame();
+						ApplicationContext context = SpringFactory.getInstance();
+						MainFrame frame = (MainFrame) context.getBean("MainFrame");
 						frame.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -101,7 +105,8 @@ public class MainFrame extends JFrame {
 		JButton btnSale = new JButton("销售");
 		btnSale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SaleFrame().setVisible(true);
+				saleFrame.init();
+				//saleFrame.setVisible(true);
 			}
 		});
 		btnSale.setFont(new Font("微软雅黑", Font.BOLD, 12));
@@ -124,6 +129,11 @@ public class MainFrame extends JFrame {
 		btnPur.setIcon(new ImageIcon(MainFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/po.png")));
 		
 		JButton btnSetting = new JButton("自定义");
+		btnSetting.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(saleByDeptService.queryAll().size());
+			}
+		});
 		btnSetting.setFont(new Font("微软雅黑", Font.BOLD, 12));
 		btnSetting.setIcon(new ImageIcon(MainFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/setting.png")));
 		GroupLayout gl_btnPanel = new GroupLayout(btnPanel);
@@ -132,31 +142,27 @@ public class MainFrame extends JFrame {
 				.addGroup(gl_btnPanel.createSequentialGroup()
 					.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_btnPanel.createSequentialGroup()
-							.addGap(49)
-							.addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addGap(42)
-							.addComponent(btnInnerSale, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_btnPanel.createSequentialGroup()
 							.addGap(50)
 							.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
 								.addComponent(btnCustomer, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnPur, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
-							.addGap(43)
-							.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnSetting, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnStock, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(btnPur, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_btnPanel.createSequentialGroup()
+							.addGap(49)
+							.addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)))
+					.addGap(43)
+					.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnInnerSale, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnSetting, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnStock, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(112, Short.MAX_VALUE))
 		);
 		gl_btnPanel.setVerticalGroup(
 			gl_btnPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_btnPanel.createSequentialGroup()
-					.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_btnPanel.createSequentialGroup()
-							.addGap(22)
-							.addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_btnPanel.createSequentialGroup()
-							.addGap(23)
-							.addComponent(btnInnerSale, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)))
+					.addGap(22)
+					.addGroup(gl_btnPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnSale, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnInnerSale, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
 					.addGap(20)
 					.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnCustomer, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
@@ -165,7 +171,7 @@ public class MainFrame extends JFrame {
 					.addGroup(gl_btnPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnSetting, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnPur, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(83, Short.MAX_VALUE))
+					.addContainerGap(55, Short.MAX_VALUE))
 		);
 		btnPanel.setLayout(gl_btnPanel);
 		

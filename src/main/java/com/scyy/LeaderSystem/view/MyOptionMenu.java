@@ -13,8 +13,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
+import org.springframework.stereotype.Component;
+
 import com.scyy.LeaderSystem.util.MyDefaultTreeCellRenderer;
 
+@Component
 public class MyOptionMenu extends JPanel {
 	
 	private JTree tree;
@@ -82,6 +85,12 @@ public class MyOptionMenu extends JPanel {
 					.addComponent(tree, GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
+		
+		//默认展开树的每个节点
+		for(int i=0; i<tree.getRowCount(); i++)
+	    {
+	    	tree.expandRow(i);
+	    }
 		
 		this.tree = tree;
 	}
