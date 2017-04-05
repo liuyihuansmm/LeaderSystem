@@ -1,4 +1,4 @@
-package com.scyy.LeaderSystem.view;
+package com.scyy.LeaderSystem.view.common;
 
 import java.awt.Color;
 

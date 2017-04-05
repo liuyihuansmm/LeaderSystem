@@ -1,4 +1,4 @@
-package com.scyy.LeaderSystem.view;
+package com.scyy.LeaderSystem.view.common;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,6 +16,7 @@ import javax.swing.tree.DefaultTreeModel;
 import org.springframework.stereotype.Component;
 
 import com.scyy.LeaderSystem.util.MyDefaultTreeCellRenderer;
+import com.scyy.LeaderSystem.view.SaleFrame;
 
 @Component
 public class MyOptionMenu extends JPanel {

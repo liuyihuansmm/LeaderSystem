@@ -35,8 +35,11 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	
+//	@Autowired
+//	private SaleFrame saleFrame;
+	
 	@Autowired
-	private SaleFrame saleFrame;
+	private TotalSaleFrame totalSaleFrame;
 	
 	@Autowired
 	private SaleByDeptService saleByDeptService;
@@ -105,7 +108,7 @@ public class MainFrame extends JFrame {
 		JButton btnSale = new JButton("销售");
 		btnSale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				saleFrame.init();
+				//saleFrame.init();
 				//saleFrame.setVisible(true);
 			}
 		});
@@ -131,7 +134,8 @@ public class MainFrame extends JFrame {
 		JButton btnSetting = new JButton("自定义");
 		btnSetting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(saleByDeptService.queryAll().size());
+				//System.out.println(saleByDeptService.queryAll().size());
+				totalSaleFrame.init();
 			}
 		});
 		btnSetting.setFont(new Font("微软雅黑", Font.BOLD, 12));
