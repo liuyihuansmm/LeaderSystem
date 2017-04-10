@@ -9,30 +9,24 @@ import org.springframework.stereotype.Component;
 import com.scyy.LeaderSystem.model.SaleByDept;
 import com.scyy.LeaderSystem.service.SaleByDeptService;
 import com.scyy.LeaderSystem.util.NumFormat;
-import com.scyy.LeaderSystem.view.common.BaseFrame;
+import com.scyy.LeaderSystem.view.common.MyDataViewPane;
 
-/**
- * 总销售面板
- * @author LYH
- *
- */
-//@Component
-public class TotalSaleFrame extends BaseFrame{
-	
+@Component("SalePane")
+public class SalePane extends MyDataViewPane {
 	@Autowired
-	private  SaleByDeptService saleByDeptService;
+	private SaleByDeptService saleByDeptService;
 	
 	public void init(){
 		//super.init(getTableData(),getTableTitle());
-		this.setTitle("总销售");
+		System.out.println("SalePane执行");
 	}
 	
-	//表体数据
-	public Object[][] getTableData(){
+	// 表体数据
+	public Object[][] getTableData() {
 		List<SaleByDept> list = saleByDeptService.queryAll();
 		int rowCount = list.size();
 		Object[][] datas = new Object[rowCount][10];
-		for(int i=0;i<rowCount;i++){
+		for (int i = 0; i < rowCount; i++) {
 			datas[i][0] = NumFormat.format(list.get(i).getDepName());
 			datas[i][1] = NumFormat.format(list.get(i).getDailySale());
 			datas[i][2] = NumFormat.format(list.get(i).getMonthSale());
@@ -46,11 +40,12 @@ public class TotalSaleFrame extends BaseFrame{
 		}
 		return datas;
 	}
-	
-	//表体名称
-	public String[] getTableTitle(){
+
+	// 表头名称
+	public String[] getTableTitle() {
 		Calendar now = Calendar.getInstance();
-		String columns[] = {"部门",(now.get(Calendar.MONTH)+1)+"月"+(now.get(Calendar.DAY_OF_MONTH)-1)+"日销售","本月销售","本月预算","本月完成率","本年累计","本年预算","本年完成率","超期金额","应收金额"};
+		String columns[] = { "部门", (now.get(Calendar.MONTH) + 1) + "月" + (now.get(Calendar.DAY_OF_MONTH) - 1) + "日销售",
+				"本月销售", "本月预算", "本月完成率", "本年累计", "本年预算", "本年完成率", "超期金额", "应收金额" };
 		return columns;
 	}
 }

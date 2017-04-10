@@ -6,9 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.scyy.LeaderSystem.service.SaleByDeptService;
 import com.scyy.LeaderSystem.util.IpUtil;
 import com.scyy.LeaderSystem.util.SpringFactory;
+import com.scyy.LeaderSystem.view.common.BaseFrame;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -35,17 +35,9 @@ public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
 	
-//	@Autowired
-//	private SaleFrame saleFrame;
-	
 	@Autowired
-	private TotalSaleFrame totalSaleFrame;
-	
-	@Autowired
-	private SaleByDeptService saleByDeptService;
-	/**
-	 * Launch the application.
-	 */
+	private BaseFrame baseFrame;
+
 	public static void main(String[] args) {
 		if(IpUtil.check()){
 			EventQueue.invokeLater(new Runnable() {
@@ -108,8 +100,7 @@ public class MainFrame extends JFrame {
 		JButton btnSale = new JButton("销售");
 		btnSale.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//saleFrame.init();
-				//saleFrame.setVisible(true);
+			
 			}
 		});
 		btnSale.setFont(new Font("微软雅黑", Font.BOLD, 12));
@@ -135,7 +126,7 @@ public class MainFrame extends JFrame {
 		btnSetting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println(saleByDeptService.queryAll().size());
-				totalSaleFrame.init();
+				baseFrame.init();
 			}
 		});
 		btnSetting.setFont(new Font("微软雅黑", Font.BOLD, 12));

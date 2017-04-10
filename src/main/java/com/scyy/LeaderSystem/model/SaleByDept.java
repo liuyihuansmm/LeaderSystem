@@ -11,23 +11,23 @@ public class SaleByDept {
 	
 	private String depName;			//部门名称
 	
-	private Double dailySale;		//昨日销售
+	private Integer dailySale;		//昨日销售
 	
-	private Double monthSale;		//月累计销售
+	private Integer monthSale;		//月累计销售
 	
 	private Double monthComRate;	//月完成率
 	
-	private Double monthBudget;		//月预算
+	private Integer monthBudget;		//月预算
 	
-	private Double yearSale;		//年累计销售
+	private Integer yearSale;		//年累计销售
 	
-	private Double yearBudget;		//年预算
+	private Integer yearBudget;		//年预算
 	
 	private Double yearComRate;		//年完成率
 	
-	private Double overtimeMoney;	//超期金额
+	private Integer overtimeMoney;	//超期金额
 	
-	private Double receiveMoney;	//应收金额
+	private Integer receiveMoney;	//应收金额
 	
 	public SaleByDept(){}
 	
@@ -47,19 +47,19 @@ public class SaleByDept {
 		this.depName = depName;
 	}
 
-	public Double getDailySale() {
+	public Integer getDailySale() {
 		return dailySale;
 	}
 
-	public void setDailySale(Double dailySale) {
+	public void setDailySale(Integer dailySale) {
 		this.dailySale = dailySale;
 	}
 
-	public Double getMonthSale() {
+	public Integer getMonthSale() {
 		return monthSale;
 	}
 
-	public void setMonthSale(Double monthSale) {
+	public void setMonthSale(Integer monthSale) {
 		this.monthSale = monthSale;
 	}
 
@@ -71,27 +71,27 @@ public class SaleByDept {
 		this.monthComRate = monthComRate;
 	}
 
-	public Double getMonthBudget() {
+	public Integer getMonthBudget() {
 		return monthBudget;
 	}
 
-	public void setMonthBudget(Double monthBudget) {
+	public void setMonthBudget(Integer monthBudget) {
 		this.monthBudget = monthBudget;
 	}
 
-	public Double getYearSale() {
+	public Integer getYearSale() {
 		return yearSale;
 	}
 
-	public void setYearSale(Double yearSale) {
+	public void setYearSale(Integer yearSale) {
 		this.yearSale = yearSale;
 	}
 
-	public Double getYearBudget() {
+	public Integer getYearBudget() {
 		return yearBudget;
 	}
 
-	public void setYearBudget(Double yearBudget) {
+	public void setYearBudget(Integer yearBudget) {
 		this.yearBudget = yearBudget;
 	}
 
@@ -103,19 +103,19 @@ public class SaleByDept {
 		this.yearComRate = yearComRate;
 	}
 
-	public Double getOvertimeMoney() {
+	public Integer getOvertimeMoney() {
 		return overtimeMoney;
 	}
 
-	public void setOvertimeMoney(Double overtimeMoney) {
+	public void setOvertimeMoney(Integer overtimeMoney) {
 		this.overtimeMoney = overtimeMoney;
 	}
 
-	public Double getReceiveMoney() {
+	public Integer getReceiveMoney() {
 		return receiveMoney;
 	}
 
-	public void setReceiveMoney(Double receiveMoney) {
+	public void setReceiveMoney(Integer receiveMoney) {
 		this.receiveMoney = receiveMoney;
 	}
 

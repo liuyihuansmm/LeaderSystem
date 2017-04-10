@@ -25,7 +25,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 
-
 public class SaleFrame extends JFrame {
 	private JPanel contentPane;
 	
