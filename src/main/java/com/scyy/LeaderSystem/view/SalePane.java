@@ -11,14 +11,18 @@ import com.scyy.LeaderSystem.service.SaleByDeptService;
 import com.scyy.LeaderSystem.util.NumFormat;
 import com.scyy.LeaderSystem.view.common.MyDataViewPane;
 
+/**
+ * 部门总销售
+ * @author LYH
+ *
+ */
 @Component("SalePane")
 public class SalePane extends MyDataViewPane {
 	@Autowired
 	private SaleByDeptService saleByDeptService;
 	
 	public void init(){
-		//super.init(getTableData(),getTableTitle());
-		System.out.println("SalePane执行");
+		this.getScrollPane_basedata().init(getTableData(),getTableTitle());
 	}
 	
 	// 表体数据

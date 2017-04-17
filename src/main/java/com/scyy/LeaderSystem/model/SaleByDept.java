@@ -7,35 +7,35 @@ package com.scyy.LeaderSystem.model;
  */
 public class SaleByDept {
 	
-	private Integer id;  			//序号
+	private int id;  			//序号
 	
 	private String depName;			//部门名称
 	
-	private Integer dailySale;		//昨日销售
+	private int dailySale;		//昨日销售
 	
-	private Integer monthSale;		//月累计销售
+	private int monthSale;		//月累计销售
 	
-	private Double monthComRate;	//月完成率
+	private float monthComRate;	//月完成率
 	
-	private Integer monthBudget;		//月预算
+	private int monthBudget;		//月预算
 	
-	private Integer yearSale;		//年累计销售
+	private int yearSale;		//年累计销售
 	
-	private Integer yearBudget;		//年预算
+	private int yearBudget;		//年预算
 	
-	private Double yearComRate;		//年完成率
+	private float yearComRate;		//年完成率
 	
-	private Integer overtimeMoney;	//超期金额
+	private int overtimeMoney;	//超期金额
 	
-	private Integer receiveMoney;	//应收金额
+	private int receiveMoney;	//应收金额
 	
 	public SaleByDept(){}
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -47,75 +47,75 @@ public class SaleByDept {
 		this.depName = depName;
 	}
 
-	public Integer getDailySale() {
+	public int getDailySale() {
 		return dailySale;
 	}
 
-	public void setDailySale(Integer dailySale) {
+	public void setDailySale(int dailySale) {
 		this.dailySale = dailySale;
 	}
 
-	public Integer getMonthSale() {
+	public int getMonthSale() {
 		return monthSale;
 	}
 
-	public void setMonthSale(Integer monthSale) {
+	public void setMonthSale(int monthSale) {
 		this.monthSale = monthSale;
 	}
 
-	public Double getMonthComRate() {
+	public float getMonthComRate() {
 		return monthComRate;
 	}
 
-	public void setMonthComRate(Double monthComRate) {
+	public void setMonthComRate(float monthComRate) {
 		this.monthComRate = monthComRate;
 	}
 
-	public Integer getMonthBudget() {
+	public int getMonthBudget() {
 		return monthBudget;
 	}
 
-	public void setMonthBudget(Integer monthBudget) {
+	public void setMonthBudget(int monthBudget) {
 		this.monthBudget = monthBudget;
 	}
 
-	public Integer getYearSale() {
+	public int getYearSale() {
 		return yearSale;
 	}
 
-	public void setYearSale(Integer yearSale) {
+	public void setYearSale(int yearSale) {
 		this.yearSale = yearSale;
 	}
 
-	public Integer getYearBudget() {
+	public int getYearBudget() {
 		return yearBudget;
 	}
 
-	public void setYearBudget(Integer yearBudget) {
+	public void setYearBudget(int yearBudget) {
 		this.yearBudget = yearBudget;
 	}
 
-	public Double getYearComRate() {
+	public float getYearComRate() {
 		return yearComRate;
 	}
 
-	public void setYearComRate(Double yearComRate) {
+	public void setYearComRate(float yearComRate) {
 		this.yearComRate = yearComRate;
 	}
 
-	public Integer getOvertimeMoney() {
+	public int getOvertimeMoney() {
 		return overtimeMoney;
 	}
 
-	public void setOvertimeMoney(Integer overtimeMoney) {
+	public void setOvertimeMoney(int overtimeMoney) {
 		this.overtimeMoney = overtimeMoney;
 	}
 
-	public Integer getReceiveMoney() {
+	public int getReceiveMoney() {
 		return receiveMoney;
 	}
 
-	public void setReceiveMoney(Integer receiveMoney) {
+	public void setReceiveMoney(int receiveMoney) {
 		this.receiveMoney = receiveMoney;
 	}
 

@@ -31,7 +31,7 @@ public class BaseFrame extends JFrame{
 	@Qualifier("MyDataViewPane")
 	protected MyDataViewPane tabbedPane;	//右侧数据展示
 	
-	public void init(){
+	public BaseFrame(){
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(BaseFrame.class.getResource("/com/scyy/LeaderSystem/resources/images/title_icon.jpg")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,11 +40,13 @@ public class BaseFrame extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		this.setContentPane(contentPane);
-		
-		contentPane.add(menuBar);
-		contentPane.add(navigator);
+	}
+	
+	public void init(){
+		this.getContentPane().add(menuBar);
+		this.getContentPane().add(navigator);
 		tabbedPane.init();		
-		contentPane.add(tabbedPane);
+		this.getContentPane().add(tabbedPane);
 		this.setVisible(true);
 	}
 

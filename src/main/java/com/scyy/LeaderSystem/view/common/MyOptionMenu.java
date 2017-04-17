@@ -22,6 +22,7 @@ import org.springframework.stereotype.Component;
 import com.scyy.LeaderSystem.util.MyDefaultTreeCellRenderer;
 import com.scyy.LeaderSystem.view.SaleFrame;
 import com.scyy.LeaderSystem.view.SalePane;
+import com.scyy.LeaderSystem.view.SaleThreeMonthPane;
 
 /**
  * 左侧导航栏
@@ -36,6 +37,13 @@ public class MyOptionMenu extends JPanel {
 	@Autowired
 	@Qualifier("SalePane")
 	private SalePane salePane;
+	
+	@Autowired
+	@Qualifier("SaleThreeMonthPane")
+	private SaleThreeMonthPane saleThreeMonthPane;
+	
+	@Autowired
+	private BaseFrame baseFrame;
 	
 	public MyOptionMenu(){
 		this.setBounds(0, 51, 183, 633);
@@ -123,10 +131,14 @@ public class MyOptionMenu extends JPanel {
 				// 返回最后选定的节点
 				DefaultMutableTreeNode selectedNode = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 				if (selectedNode.toString().equals("总销售")) {
-					salePane.init();
+					baseFrame.setTabbedPane(salePane);
+					System.out.println("测试salePane");
+					baseFrame.init();
 				}
 				if (selectedNode.toString().equals("近三月销售")) {
-					System.out.println(2);
+					baseFrame.setTabbedPane(saleThreeMonthPane);
+					System.out.println("测试saleThreeMonthPane");
+					baseFrame.init();
 				}
 				if (selectedNode.toString().equals("内部销售")) {
 					System.out.println(3);

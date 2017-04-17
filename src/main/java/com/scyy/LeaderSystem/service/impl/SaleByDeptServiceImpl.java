@@ -20,7 +20,5 @@ public class SaleByDeptServiceImpl implements SaleByDeptService{
 	public List<SaleByDept> queryAll() {
 		// TODO Auto-generated method stub
 		return saleByDeptDao.queryAll();
-		
 	}
-
 }
